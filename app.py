@@ -14,7 +14,7 @@ def get_stocks():
 
 @app.post("/trade")
 def trade(order:TradeRequest):
-    if order.action == "buy":
+    if order.action.lower() == "buy":
         if market.stocks.get(order.symbol,0) == 0 :
             market.add_stock(order.symbol)
 
@@ -30,4 +30,4 @@ def trade(order:TradeRequest):
 def show_portfolio():
     return {"username": user.username,
             "cash_balance": user.balance,
-            "holdings": [{"symbol": symbol, "price": price} for symbol, price in market.stocks.items()]}
+            "holdings": [{"symbol": symbol, "quantity": quantity,"current_value": market.stocks.get(symbol,0)} for symbol, quantity in user.holdings.items()]}
