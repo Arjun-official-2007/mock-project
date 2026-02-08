@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Marker | Futuristic Trading Simulator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <canvas id="hero-canvas" class="hero-video-bg"></canvas>
+
+    <nav>
+        <div class="logo font-tech">TRADE MARKER</div>
+        <div class="nav-links">
+            <a href="#home" class="active" id="nav-home">Home</a>
+            <a href="#dashboard" id="nav-dashboard">Dashboard</a>
+            <a href="#history" id="nav-history">History</a>
+        </div>
+    </nav>
+
+    <!-- Page 1: Home -->
+    <main id="home-page" class="page active">
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="font-tech">TRADE MARKER</h1>
+                <p>Experience the next generation of asset management. Real-time markets, high-stakes decisions, and a
+                    high-performance terminal at your fingertips.</p>
+                <button class="btn-cta" onclick="window.location.hash = '#dashboard'">Initialize Terminal</button>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-text">
+                <h2>The Trading Protocol</h2>
+                <p>Trade Marker is a high-frequency trading simulation engine designed for traders who demand precision.
+                    Our algorithm simulates market volatility with 99.9% accuracy to the real-world chaos.</p>
+                <p>Master the art of timing, manage your portfolio, and watch your net worth climb or crash in
+                    real-time.</p>
+            </div>
+            <div class="about-image section-card">
+                <h3 class="font-tech">SYSTEM STATUS</h3>
+                <p style="color: var(--neon-green)">> ENGINE: ONLINE</p>
+                <p style="color: var(--neon-green)">> LATENCY: 2ms</p>
+                <p style="color: var(--neon-green)">> PROTOCOL: V4.2</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Trade Marker System. Decrypted Access Only.</p>
+        </footer>
+    </main>
+
+    <!-- Page 2: Dashboard -->
+    <main id="dashboard-page" class="page">
+        <div class="dashboard-grid">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="stat-item">
+                    <div class="stat-label">Trader</div>
+                    <div class="stat-value" id="user-name">Trader1</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Cash Balance</div>
+                    <div class="stat-value" id="user-cash">₹15,000</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Net Worth</div>
+                    <div class="stat-value" id="user-networth">₹15,000</div>
+                </div>
+            </div>
+
+            <!-- Market Section -->
+            <section class="section-card">
+                <h3 class="font-tech">Market Terminal</h3>
+                <table id="market-table">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Volatility</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="market-body">
+                        <!-- Market rows will be injected by JS -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section class="section-card">
+                <h3 class="font-tech">Portfolio</h3>
+                <table id="portfolio-table">
+                    <thead>
+                        <tr>
+                            <th>Asset</th>
+                            <th>Qty</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="portfolio-body">
+                        <!-- Portfolio rows will be injected by JS -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <!-- Page 3: History -->
+    <main id="history-page" class="page">
+        <div class="history-container section-card">
+            <h3 class="font-tech">Trade History</h3>
+            <table id="history-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Asset</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="history-body">
+                    <!-- History rows will be injected by JS -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Trade Modal -->
+    <div id="trade-modal" class="modal">
+        <div class="modal-content">
+            <h2 class="font-tech" id="modal-title">EXECUTE TRADE</h2>
+            <div class="input-group">
+                <label>Asset</label>
+                <div id="modal-asset-name" class="font-tech" style="font-size: 1.5rem; color: var(--electric-cyan)">
+                    SILVER</div>
+            </div>
+            <div class="input-group">
+                <label>Quantity</label>
+                <input type="number" id="trade-qty" value="1" min="1">
+            </div>
+            <button id="execute-btn" class="btn-execute">EXECUTE TRADE</button>
+            <button onclick="document.getElementById('trade-modal').style.display='none'"
+                style="border: none; background: transparent; color: var(--text-secondary); margin-top: 15px; font-size: 0.7rem;">CANCEL</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
