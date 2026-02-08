@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -136,3 +137,38 @@ app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+=======
+from fastapi import FastAPI
+from models import TradeRequest,Asset
+from logic import Stock,User,Market
+
+app = FastAPI()
+
+user = User("Noob",10000)
+
+market = Market()
+
+@app.get("/market")
+def get_stocks():
+    return [{"symbol": symbol, "price": price} for symbol, price in market.stocks.items()]
+
+@app.post("/trade")
+def trade(order:TradeRequest):
+    if order.action.lower() == "buy":
+        if market.stocks.get(order.symbol,0) == 0 :
+            market.add_stock(order.symbol)
+
+        price = market.stocks[order.symbol]
+        temp_stock = Stock(order.symbol ,price)
+        user.buy(temp_stock,order.quantity)
+    else:
+        price = market.stocks[order.symbol]
+        temp_stock = Stock(order.symbol ,price)
+        user.sell(temp_stock,order.quantity)
+
+@app.get("/portfolio")
+def show_portfolio():
+    return {"username": user.username,
+            "cash_balance": user.balance,
+            "holdings": [{"symbol": symbol, "quantity": quantity,"current_value": market.stocks.get(symbol,0)} for symbol, quantity in user.holdings.items()]}
+>>>>>>> ba5d57c6edace889b55e5b8268f61ad496fcc1da
