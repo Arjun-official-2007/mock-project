@@ -1,0 +1,27 @@
+# --- Python Basics ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments (Crucial) ---
+# Assuming you might name it venv, env, or .venv
+venv/
+env/
+.venv/
+.env
+
+# --- IDE Settings (Don't force your VS Code settings on your friend) ---
+.vscode/
+.idea/
+
+# --- OS Junk ---
+.DS_Store
+Thumbs.db
+
+# --- Distribution / Builds (If you package it later) ---
+build/
+dist/
+*.egg-info/
+
+# --- Logs ---
+*.log
